@@ -3,7 +3,7 @@
 ##################
 ## Provided testing datasets in `./data/raw`: 
 ## for own data: file saved as a .rds containing a object of class MoveStack
-inputFileName = "./data/raw/input1_greygeese.rds" 
+inputFileName = "./data/raw/example_nonloc_accesmeas_2vultures.rds"
 
 ## optionally change the output file name
 unlink("./data/output/", recursive = TRUE) # delete "output" folder if it exists, to have a clean start for every run
@@ -23,7 +23,12 @@ outputFileName = "./data/output/output.rds"
 
 args <- list() # if your function has no arguments, this line still needs to be active
 # Add all your arguments of your r-function here
-args[["year"]] = 2014 
+args[["min_act_change"]] = 10.5
+args[["time_itv"]] = 5.2
+args[["time_unit"]] = "hours" #works for hours, days, weeks
+args[["volt.name"]] = "tag_voltage"
+args[["activity.name"]] = "activity_count"
+args[["circ"]] = 256.4
 
 ##############################
 ## source, setup & simulate ## leave as is!
