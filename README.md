@@ -5,7 +5,7 @@ MoveApps
 Github repository: *github.com/movestore/Mortality_by_Activity_Sensor*
 
 ## Description
-Evaluate the possibility of tag/animal mortality by activity sensor `activity_count`. Provides indication of voltage decrease, maximum change of activity count and derives two alert attributes.
+Evaluate the possibility of tag/animal mortality by activity sensor `activity_count` and low voltage. Provides indication of voltage decrease, maximum change of activity count and derives two alert attributes.
 
 ## Documentation
 This App has been developed to extract mortality alert attributes from the activity_count and voltage measurement of the "accessory measurements" files provided by some tags (e.g. Microwave Telemetry).
