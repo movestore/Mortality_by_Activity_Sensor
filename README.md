@@ -10,6 +10,8 @@ Evaluate the possibility of tag/animal mortality by activity sensor `activity_co
 ## Documentation
 This App has been developed to extract mortality alert attributes from the activity_count and voltage measurement of the "accessory measurements" files provided by some tags (e.g. Microwave Telemetry).
 
+The App evaluates voltage and acitivty in a time interval of user-defined length, but for each loaded track this interval is selected from the end of the track, i.e. the intervals are not synchronous.
+
 From the user indicated tag voltage attribute, the last voltage measurement as well as a linear slope of all values in the defined time interval (estimated voltage change rate) are calculated for each track (individual_local_identifier). The number of measurements included for each track are indicated. If the last voltage measurement for a track is below a user given threshold, the voltage alert attribute is set to `1`.
 
 In a next step, the user defined activity count variable of the defined final time interval is evaluated for maximum circular difference considering the user provided circularity (see below). As indicators of the activity, the new attributes maximum activity timestamp (final timestamp of the max activity difference pair of measures), maximum activity time difference (between the pair of timestamps of the max activity difference measures pair), the actual maximum activity difference and an activity alert that is set to `1` if the maximum activity difference is below the use defined threshold.
