@@ -23,12 +23,13 @@ outputFileName = "./data/output/output.rds"
 
 args <- list() # if your function has no arguments, this line still needs to be active
 # Add all your arguments of your r-function here
-args[["min_act_change"]] = 10.5
 args[["time_itv"]] = 5.2
 args[["time_unit"]] = "hours" #works for hours, days, weeks
-args[["volt.name"]] = "tag_voltage"
 args[["activity.name"]] = "activity_count"
-args[["circ"]] = 256.4
+args[["circ"]] = 256
+args[["min_act_change"]] = 10.5
+args[["volt.name"]] = "tag_voltage"
+args[["volt_thr"]] = 3.7
 
 ##############################
 ## source, setup & simulate ## leave as is!

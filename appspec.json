@@ -1,19 +1,12 @@
 {
   "settings": [
-            {
-      "id": "min_act_change",
-      "name": "Minimum activity change",
-      "description": "Insert the minimum change value of activity measure that you require within the below defined time interval. If the activity measure does not change by at least this value, the activity alert will be set to 1.",
-      "defaultValue": null,
-      "type": "DOUBLE"
-    }
 	    {
       "id": "time_itv",
       "name": "Time interval to check for mortality",
       "description": "Define the value of the time interval length (unit below) which shall be checked for mortality indications of each track. Make sure that more than one measuement is expected in the time interval. Note that the interval timing can differ by track according to the timestamp of last available measurement.",
       "defaultValue": null,
       "type": "DOUBLE"
-    }
+    },
     {
       "id": "time_unit",
       "name": "Time unit for interval.",
@@ -35,11 +28,25 @@
         }
       ]
     },
+	{
+      "id": "activity.name",
+      "name": "Name of activity count attribute",
+      "description": "Please insert the name of the activity count attribute in your data. Check the correct spelling in the summary view's track attributes section of the preceding App.",
+      "defaultValue": "activity_count",
+      "type": "STRING"
+    },
     {
       "id": "circ",
       "name": "Range of circular activity measures",
       "description": "Insert the number of different activity measures. Default 256 (for values between 0 and 255)",
       "defaultValue": 256,
+      "type": "DOUBLE"
+    },
+	{
+      "id": "min_act_change",
+      "name": "Minimum activity change",
+      "description": "Insert the minimum change value of activity measure that you require within the below defined time interval. If the activity measure does not change by at least this value, the activity alert will be set to 1.",
+      "defaultValue": null,
       "type": "DOUBLE"
     },
 	{
@@ -49,12 +56,12 @@
       "defaultValue": "tag_voltage",
       "type": "STRING"
     },
-	{
-      "id": "activity.name",
-      "name": "Name of activity count attribute",
-      "description": "Please insert the name of the activity count attribute in your data. Check the correct spelling in the summary view's track attributes section of the preceding App.",
-      "defaultValue": "activity_count",
-      "type": "STRING"
+		{
+      "id": "volt_thr",
+      "name": "Minimum voltage threshold",
+      "description": "Insert the minimum voltage that you consider 'healthy' for your tag/transmitter. If the last measurement of a track/animal has recorded a voltage below this threshold value, the voltage alert will be set to 1.",
+      "defaultValue": null,
+      "type": "DOUBLE"
     }
   ],
   "dependencies": {
@@ -75,6 +82,7 @@
   "keywords": [
     "mortality",
     "activity measure",
+	"activity count",
 	"accessory measure",
 	"tag voltage",
 	"alert"
