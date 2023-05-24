@@ -22,6 +22,8 @@ All additional attributes are returned as a csv table, as well as appended to th
 
 -  `number_of_measuremens`: number of measurement that were in the selected time interval and considered in the performed calculations. If this number is `1`, activity differences could not be derived and the activity alert is set to NA.
 
+- `timestamp_end`: timestamp of the last location of the selected time interval (and total track), which can differ by track.
+
 - `voltage_end [mV]`: voltage of the last voltage measurement of each track/animal, unit as provided in name (might differ from example here).
 
 - `est_voltage_change_rate [mV/h]`: estimated voltage change rate in the unit as provided in the name, the divisor is the same as selected for `max_activity_dt` below. Unit might differ from the example here. If the value of this attribute is negative with relatively large absolute value, the voltage is decreasing in a way to indicate that the tag is not loading properly and the animal or tag likely dead.

@@ -32,6 +32,7 @@ rFunction = function(data, min_act_change=NULL,time_itv=NULL,time_unit="hours",v
       if (dim(x)[1]>=2)
       {
         eval(parse(text=paste0("voltage <- x$",volt.name))) 
+        timestamp.end <- x$timestamp[length(voltage)]
         voltage.end <- voltage[length(voltage)]
         dtu <- difftime(mt_time(x),mt_time(x)[1],units=time_unit)
         len <- dim(x)[1]
@@ -39,19 +40,20 @@ rFunction = function(data, min_act_change=NULL,time_itv=NULL,time_unit="hours",v
         units(lin.slp) <- paste0(units(voltage),"/",time_unit)
         voltage_alert <- 0
         if (as.numeric(voltage.end) < volt_thr) voltage_alert <- 1
-        data.frame("individual_local_identifier"=mt_track_id(x)[1],"number_of_measuremens"=len,"voltage_end"=voltage.end,"est_voltage_change_rate"=lin.slp,"voltage_alert"=voltage_alert)
+        data.frame("individual_local_identifier"=mt_track_id(x)[1],"number_of_measuremens"=len,"timestamp_end"=timestamp.end,"voltage_end"=voltage.end,"est_voltage_change_rate"=lin.slp,"voltage_alert"=voltage_alert)
       } else if (dim(x)[1]==1) #special case 1 measurement, no change rate possible
       {
         logger.info(paste("For the track",mt_track_id(x)[1],"only one measurement lies in the defined time interval. Therefore, no voltage slope can be calculated."))
         eval(parse(text=paste0("voltage <- x$",volt.name))) 
+        timestamp.end <- x$timestamp
         voltage.end <- voltage
         voltage_alert <- 0
         if (as.numeric(voltage.end) < volt_thr) voltage_alert <- 1
-        data.frame("individual_local_identifier"=mt_track_id(x)[1],"number_of_measuremens"=1,"voltage_end"=voltage.end,"est_voltage_change_rate"=NA,"voltage_alert"=voltage_alert)
+        data.frame("individual_local_identifier"=mt_track_id(x)[1],"number_of_measuremens"=1,"timestamp_end"=timestamp.end,"voltage_end"=voltage.end,"est_voltage_change_rate"=NA,"voltage_alert"=voltage_alert)
       } else #should never reach this branch
       {
         logger.info("By some unforeseen circumstance, the data contains a track without measurements. This track is not integrated in the output.")
-        data.frame("individual_local_identifier"=character(),"number_of_measuremens"=numeric(),"voltage_end"=numeric(),"est_voltage_change_rate"=numeric(),"voltage_alert"=numeric())
+        data.frame("individual_local_identifier"=character(),"number_of_measuremens"=numeric(),"timestamp_end"=character(),"voltage_end"=numeric(),"est_voltage_change_rate"=numeric(),"voltage_alert"=numeric())
       }
     })
     volt <- Reduce(full_join,volt.i)
